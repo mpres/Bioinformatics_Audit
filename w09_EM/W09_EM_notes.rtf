@@ -1,0 +1,98 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 STIXGeneral-Regular;\f2\fswiss\fcharset0 Helvetica-Bold;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww35640\viewh20980\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\
+\
+\
+\
+Log-likehood,\
+a very random and bad guess\
+\
+We need to calculate the probability that a read a...j will be a part of an isoform (Gn)\
+  theta, probability of being a part of the long likelily hoodl\
+\
+N * K,  \
+layers of abstractions, walk-through every thing here. \
+a \
+delta calss if 1 \
+\
+\uc0\u952 i, if a is part of that isoform,\
+.08,0,\
+\
+a []\
+\
+\
+10 iso forms\
+\
+ab, bc, bcd, cda\
+\
+.2, .3, .4, .1\
+\
+log ( .2,0,0,.1 )\
+\
+log(.3) * the total amount of a\
+repeat for the total of b\
+Sum of that,\
+\{\}\
+\
+\
+After looking at some one of the answers for the log likely hood, not teriible off here.\
+prep\
+1. Grab the Loc_strucutre (AB, BC, yada)\
+2. Grab the nuc_abundes (this is \uc0\u952 )\
+3. Get the lengths of all the data.\
+\
+A. Calculate one segment_prob\
+joint_prob\
+[]\
+if read (with be a...j) is in the Arc_loc, then use the nuc_abundance for it, * the 1/L fraction\
+so 
+\f1 \uc0\u55349 \u56575 
+\f0 i * 1/L if r is in S (the read \{a...j\} is in the Arc_log (ab,abc,bc,etc) (if not foudn it's not caculated\
+This value for each Arc_loc  will be appended on to an array\
+This is for one segment.\
+[.03,.1,.08] (as an example)\
+joint_probability array\
+\
+B.Later your will use np.logexpsum(joint_probability_array)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 np.special.logexpsum(joint_probability_array)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+to turn it into one value S_probability\
+\
+\
+C. The S_probability will be times by the amount of reads\
+\
+\
+A. Will be S (all segments), X thetas (\
+dictionary 
+\f2\b \{segment: theta X 1/L  if the segment exist in the transcript
+\f0\b0  (or Arc_Structure)\
+theta = nucleo_abundance,\
+this will give us this dictionary matrix [] of S X \uc0\u952  (theta or nucleotide abudances)\
+S will be a np.array\
+\uc0\u952  will also be a np.array, S X \u952  is a matrix\
+(with hte index being S)\
+\
+\
+B. Will use np.logexpsum(Join_Probability_array) and return a \
+Array, (\
+\
+C. This portion will times the S-Probablity by the read count array [a...j] + a count \
+so \{'a' : 100000,'b':250000\}\
+\
+D. The next will handle the data\
+\
+\
+\
+\
+\
+}
